@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Malu Semijoias</title>
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contato.css') }}">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logotipo">MALU SEMIJOIAS</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('produtos') }}">Catálogo</a></li>
+                <li><a href="{{ url_for('carrinho') }}">Carrinho</a></li>
+                <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+                <li><a href="{{ url_for('contato') }}" class="active">Contato</a></li>
+                <li><a href="{{ url_for('logout') }}" class="btn-sair-nav">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contato-wrapper">
+        <!-- HERO HEADER -->
+        <header class="contato-hero">
+            <span class="tag-subtitulo">✦ Atendimento Exclusivo</span>
+            <h2>Fale Conosco</h2>
+            <p>Estamos prontos para atendê-la com todo o carinho e tirar suas dúvidas sobre nossas coleções.</p>
+        </header>
+
+        <!-- BANNER DE DESTAQUE: GRUPO VIP WHATSAPP -->
+        <section class="banner-vip-whatsapp">
+            <div class="vip-conteudo">
+                <div class="vip-texto">
+                    <span class="badge-vip">✨ COMUNIDADE EXCLUSIVA</span>
+                    <h3>Entre para o nosso Grupo VIP no WhatsApp</h3>
+                    <p>Receba lançamentos em primeira mão, cupons de desconto secretos e ofertas exclusivas antes de todo mundo!</p>
+                </div>
+                <a href="https://chat.whatsapp.com/SEU_LINK_DO_GRUPO_AQUI" target="_blank" class="btn-entrar-vip">
+                    <span class="icone-whats">💬</span> Entrar no Grupo VIP
+                </a>
+            </div>
+        </section>
+
+        <!-- GRID PRINCIPAL DE CONTATO -->
+        <div class="contato-grid">
+
+            <!-- CANAIS DE ATENDIMENTO -->
+            <div class="cards-contato-info">
+                <h3>Canais de Atendimento</h3>
+                <p class="desc-canais">Escolha o canal de sua preferência para falar diretamente com a nossa equipe:</p>
+
+                <div class="card-info-item">
+                    <div class="icone-info">📞</div>
+                    <div class="detalhes-info">
+                        <h4>Telefones & WhatsApp</h4>
+                        <p><strong>Atendimento Geral:</strong> (19) 99999-8888</p>
+                        <p><strong>Suporte a Pedidos:</strong> (19) 98888-7777</p>
+                    </div>
+                </div>
+
+                <div class="card-info-item">
+                    <div class="icone-info">✉️</div>
+                    <div class="detalhes-info">
+                        <h4>E-mails Oficiais</h4>
+                        <p><strong>Dúvidas & Vendas:</strong> contato@malusemijoias.com.br</p>
+                        <p><strong>Trocas e Devoluções:</strong> suporte@malusemijoias.com.br</p>
+                        <p><strong>Parcerias & Imprensa:</strong> parcerias@malusemijoias.com.br</p>
+                    </div>
+                </div>
+
+                <div class="card-info-item">
+                    <div class="icone-info">⏰</div>
+                    <div class="detalhes-info">
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Segunda a Sexta: 09h às 18h</p>
+                        <p>Sábado: 09h às 13h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO -->
+            <div class="box-formulario-contato">
+                <h3>Envie uma Mensagem</h3>
+                <form action="#" method="POST" onsubmit="enviarMensagem(event)">
+                    <div class="grupo-input">
+                        <label for="nome">Seu Nome Completo *</label>
+                        <input type="text" id="nome" required placeholder="Ex: Maria Silva">
+                    </div>
+
+                    <div class="grupo-input-duplo">
+                        <div class="grupo-input">
+                            <label for="email">Seu E-mail *</label>
+                            <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div class="grupo-input">
+                            <label for="telefone">Seu Telefone / WhatsApp</label>
+                            <input type="tel" id="telefone" placeholder="(19) 99999-9999">
+                        </div>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="assunto">Assunto</label>
+                        <select id="assunto">
+                            <option value="Dúvidas sobre produtos">Dúvidas sobre produtos</option>
+                            <option value="Informações sobre pedidos">Informações sobre pedidos</option>
+                            <option value="Trocas ou Devoluções">Trocas ou Devoluções</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="mensagem">Sua Mensagem *</label>
+                        <textarea id="mensagem" rows="5" required placeholder="Escreva aqui como podemos ajudar você..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enviar-mensagem">
+                        ✦ Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Malu Semijoias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function enviarMensagem(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            alert(`✨ Obrigada pelo contato, ${nome}! Sua mensagem foi enviada com sucesso.`);
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

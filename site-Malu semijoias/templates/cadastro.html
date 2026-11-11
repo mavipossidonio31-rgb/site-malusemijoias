@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malu Semijoias - Cadastro de Cliente</title>
+
+    <!-- Importação das Fontes Cinzel e Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/cadastro.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logotipo">MALU SEMIJOIAS</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('cadastro') }}" class="active">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cadastro-wrapper">
+        <!-- Lado Esquerdo: Banner Informativo da Marca -->
+        <div class="cadastro-banner">
+            <h2>Faça parte do nosso universo</h2>
+            <p class="subtitulo">Cadastre-se para ter acesso exclusivo às nossas coleções com produção própria, acabamento de alta joalheria e garantia vitalícia em cada peça.</p>
+
+            <div class="selos-diferenciais">
+                <span>✦ Produção Própria</span>
+                <span>✦ Garantia Vitalícia</span>
+                <span>✦ Banho Ouro 18k & Prata 925</span>
+                <span>✦ Envios Seguros com Seguro Joia</span>
+            </div>
+
+            <div class="box-beneficios">
+                <div class="item-beneficio">
+                    <span class="icone-beneficio">💎</span>
+                    <div>
+                        <h4>Atendimento Personalizado</h4>
+                        <p>Acompanhe o andamento dos seus pedidos em tempo real no nosso painel.</p>
+                    </div>
+                </div>
+                <div class="item-beneficio">
+                    <span class="icone-beneficio">✨</span>
+                    <div>
+                        <h4>Peças Hipoalergênicas</h4>
+                        <p>Semijoias livres de níquel com camada extra de verniz protetor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lado Direito: Formulário no Card Lilás/Bege -->
+        <div class="card-cadastro">
+            <div class="emblema-joia">✦ 💎 ✦</div>
+            <h3>Criar Conta</h3>
+
+            <form action="{{ url_for('cadastro') }}" method="POST">
+                <div class="campo-input">
+                    <label>Nome Completo</label>
+                    <input type="text" name="nome_completo" placeholder="Ex: Maria Silva" required>
+                </div>
+
+                <div class="campo-input">
+                    <label>E-mail</label>
+                    <input type="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="campo-input">
+                    <label>Senha</label>
+                    <input type="password" name="senha" placeholder="••••••••" required>
+                </div>
+
+                <div class="campo-input">
+                    <label>Telefone / WhatsApp</label>
+                    <input type="tel" name="telefone" placeholder="(00) 90000-0000" required>
+                </div>
+
+                <div class="campo-input">
+                    <label>Endereço Completo de Entrega</label>
+                    <textarea name="endereco_completo" placeholder="Rua, número, complemento, bairro, cidade, estado e CEP" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Finalizar Cadastro</button>
+            </form>
+
+            <div class="link-login">
+                Já possui uma conta? <a href="{{ url_for('index') }}">Acessar Login</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Malu Semijoias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../static/js/cadastro.js"></script>
+</body>
+</html>

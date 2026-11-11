@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malu Semijoias - Elegância Exclusiva</title>
+
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logotipo">MALU SEMIJOIAS</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="active">Início</a></li>
+                <li><a href="{{ url_for('cadastro') }}">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="home-container">
+        <!-- Lado Esquerdo: Apresentação e Diferenciais -->
+        <div class="home-banner">
+            <span class="tag-exclusiva">✦ Alta Joalheria & Elegância</span>
+            <h2>Semijoias</h2>
+            <p class="subtitulo">Descubra a sofisticação de peças desenvolvidas com acabamento impecável, pensadas para durar para sempre.</p>
+
+            <!-- Grade de Destaques Rápidos -->
+            <div class="grid-diferenciais-home">
+                <div class="card-diferencial-mini">
+                    <span class="icone-mini">✨</span>
+                    <span class="texto-mini">Produção Própria</span>
+                </div>
+                <div class="card-diferencial-mini">
+                    <span class="icone-mini">👑</span>
+                    <span class="texto-mini">Garantia Vitalícia</span>
+                </div>
+                <div class="card-diferencial-mini">
+                    <span class="icone-mini">💎</span>
+                    <span class="texto-mini">Ouro 18k & Prata 925</span>
+                </div>
+                <div class="card-diferencial-mini">
+                    <span class="icone-mini">🛡️</span>
+                    <span class="texto-mini">Seguro Joia Integrado</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lado Direito: Form de Login -->
+        <div class="card-login">
+            <h3>Acessar Conta</h3>
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="campo-input">
+                    <label>Tipo de Perfil</label>
+                    <select name="tipo_usuario">
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <div class="campo-input">
+                    <label>E-mail</label>
+                    <input type="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="campo-input">
+                    <label>Senha</label>
+                    <input type="password" name="senha" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Malu Semijoias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../static/js/home.js"></script>
+</body>
+</html>

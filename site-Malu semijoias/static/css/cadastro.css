@@ -1,0 +1,286 @@
+/* ==========================================================================
+   PÁGINA DE CADASTRO LUXUOSA (IDENTICA AO DESIGN DA HOME) - MALU SEMIJOIAS
+   ========================================================================== */
+
+/* Animação Suave de Entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cadastro-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1180px;
+    margin: 50px auto;
+    padding: 0 25px;
+    flex-wrap: wrap;
+    gap: 50px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- BANNER INFORMATIVO (LADO ESQUERDO) --- */
+.cadastro-banner {
+    max-width: 540px;
+    flex: 1;
+}
+
+.cadastro-banner h2 {
+    color: var(--lilas-escuro);
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
+}
+
+.cadastro-banner h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-detalhe), transparent);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.cadastro-banner .subtitulo {
+    font-size: 1.15rem;
+    color: #5C436E;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+/* Selos Flutuantes */
+.selos-diferenciais {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.selos-diferenciais span {
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--bege-clarissimo) 100%);
+    color: var(--lilas-escuro);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    padding: 9px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 12px rgba(154, 115, 181, 0.08);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.selos-diferenciais span:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold-detalhe);
+    box-shadow: 0 6px 18px rgba(197, 160, 89, 0.2);
+}
+
+/* Caixa com Benefícios Adicionais */
+.box-beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.item-beneficio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icone-beneficio {
+    font-size: 1.5rem;
+    background: var(--bege-clarissimo);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--gold-detalhe);
+}
+
+.item-beneficio h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--lilas-escuro);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.item-beneficio p {
+    font-size: 0.85rem;
+    color: #5C436E;
+    margin-top: 2px;
+}
+
+/* --- CARD DE CADASTRO (LADO DIREITO) --- */
+.card-cadastro {
+    position: relative;
+    background: linear-gradient(145deg, #FFFFFF 0%, var(--bege-clarissimo) 100%);
+    padding: 40px 35px;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 15px 35px rgba(74, 50, 90, 0.09);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-cadastro:hover {
+    box-shadow: 0 20px 45px rgba(74, 50, 90, 0.13);
+}
+
+.emblema-joia {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--lilas-escuro) 0%, #352142 100%);
+    color: var(--gold-detalhe);
+    padding: 4px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border: 1px solid var(--gold-detalhe);
+    box-shadow: 0 4px 12px rgba(74, 50, 90, 0.2);
+}
+
+.card-cadastro h3 {
+    color: var(--lilas-escuro);
+    font-size: 1.7rem;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.card-cadastro h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--gold-detalhe);
+}
+
+/* Campos de Formulário */
+.campo-input {
+    margin-bottom: 16px;
+}
+
+.campo-input label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--lilas-escuro);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.card-cadastro input,
+.card-cadastro textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--lilas-card);
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    color: var(--lilas-escuro);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.card-cadastro textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.card-cadastro input:focus,
+.card-cadastro textarea:focus {
+    border-color: var(--gold-detalhe);
+    box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15);
+}
+
+/* Botão Principal Finalizar Cadastro */
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--lilas-accent) 0%, var(--lilas-escuro) 100%);
+    color: #FFFFFF;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 8px 20px rgba(154, 115, 181, 0.25);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(74, 50, 90, 0.35);
+    background: linear-gradient(135deg, var(--lilas-escuro) 0%, #352142 100%);
+}
+
+.link-login {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: #5C436E;
+}
+
+.link-login a {
+    color: var(--lilas-escuro);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--gold-detalhe);
+    transition: color 0.2s ease;
+}
+
+.link-login a:hover {
+    color: var(--gold-detalhe);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .cadastro-wrapper {
+        flex-direction: column;
+        text-align: center;
+        margin: 30px auto;
+    }
+
+    .cadastro-banner h2::after {
+        margin: 10px auto 0 auto;
+    }
+
+    .selos-diferenciais {
+        justify-content: center;
+    }
+
+    .item-beneficio {
+        text-align: left;
+    }
+}

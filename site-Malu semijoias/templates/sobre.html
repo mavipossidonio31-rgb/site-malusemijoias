@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História - Malu Semijoias</title>
+
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/sobre.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logotipo">MALU SEMIJOIAS</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('produtos') }}">Catálogo</a></li>
+                <li><a href="{{ url_for('sobre') }}" class="active">Sobre</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="sobre-wrapper">
+        <!-- Hero Section / Apresentação -->
+        <section class="sobre-hero">
+            <span class="tag-exclusiva">✦ Tradição & Amor pelos Detalhes</span>
+            <h2>Nossa História</h2>
+            <p class="subtitulo-sobre">Conheça a trajetória de paixão, produção própria e alta joalheria que deu origem à Malu Semijoias.</p>
+        </section>
+
+        <!-- Seção da História com Imagem do Começo -->
+        <section class="secao-historia-grid">
+            <div class="box-imagem-historia">
+                <img src="../static/img/comeco.webp" alt="Começo da Malu Semijoias - Ateliê Artesanal" class="img-historia">
+                <div class="moldura-dourada"></div>
+            </div>
+
+            <div class="conteudo-historia">
+                <h3>O Começo de um Sonho</h3>
+                <p>
+                    A <strong>Malu Semijoias</strong> nasceu da paixão em transformar metais e pedras brutas em memórias inesquecíveis. Tudo começou em uma pequena bancada artesanal, onde cada peça era desenhada e polida manualmente com rigor e dedicação.
+                </p>
+                <p>
+                    Com o compromisso inegociável pela excelência, expandimos nossa produção própria sem perder a essência do trabalho cuidadoso e exclusivo. Hoje, vestimos momentos especiais com o brilho atemporal do ouro 18k e da prata 925.
+                </p>
+                <div class="citacao-marca">
+                    "Joias não são apenas acessórios; são expressões silenciosas da elegância e da história de cada pessoa."
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Nossas Qualidades & Diferenciais -->
+        <section class="secao-qualidades">
+            <h3 class="titulo-centrado">Nossos Diferenciais & Qualidades</h3>
+            <p class="sub-centrado">O que nos torna únicos no mercado de alta joalheria acessível.</p>
+
+            <div class="grid-qualidades">
+                <div class="card-qualidade">
+                    <div class="icone-qualidade">✨</div>
+                    <h4>Produção 100% Própria</h4>
+                    <p>Acompanhamos cada etapa do processo produtivo, garantindo design autoral e acabamento artesanal perfeito.</p>
+                </div>
+
+                <div class="card-qualidade">
+                    <div class="icone-qualidade">👑</div>
+                    <h4>Garantia Vitalícia</h4>
+                    <p>Confiança total no nosso banho em Ouro 18k e Prata 925. Garantimos a durabilidade e o brilho eterno da sua peça.</p>
+                </div>
+
+                <div class="card-qualidade">
+                    <div class="icone-qualidade">💎</div>
+                    <h4>Tecnologia Hipoalergênica</h4>
+                    <p>Todas as nossas semijoias são 100% livres de níquel e recebem camadas extras de verniz suíço protetor.</p>
+                </div>
+
+                <div class="card-qualidade">
+                    <div class="icone-qualidade">🛡️</div>
+                    <h4>Envio com Seguro Joia</h4>
+                    <p>Sua encomenda viaja protegida com seguro total contra extravios até chegar com segurança à sua porta.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Malu Semijoias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../static/js/sobre.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+/* ==========================================================================
+   ESTILOS DA PÁGINA SOBRE (HISTÓRIA E QUALIDADES) - MALU SEMIJOIAS
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sobre-wrapper {
+    max-width: 1180px;
+    margin: 40px auto;
+    padding: 0 25px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- HERO SECTION --- */
+.sobre-hero {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.tag-exclusiva {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-detalhe);
+    background-color: rgba(197, 160, 89, 0.12);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    margin-bottom: 12px;
+}
+
+.sobre-hero h2 {
+    color: var(--lilas-escuro);
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 12px;
+}
+
+.subtitulo-sobre {
+    font-size: 1.1rem;
+    color: #5C436E;
+    line-height: 1.6;
+}
+
+/* --- SEÇÃO DA HISTÓRIA COM IMAGEM --- */
+.secao-historia-grid {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(145deg, #FFFFFF 0%, var(--bege-clarissimo) 100%);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 24px;
+    padding: 45px;
+    box-shadow: 0 15px 35px rgba(74, 50, 90, 0.07);
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.box-imagem-historia {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+}
+
+.img-historia {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.moldura-dourada {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px dashed var(--gold-detalhe);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.conteudo-historia {
+    flex: 1;
+    min-width: 300px;
+}
+
+.conteudo-historia h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--lilas-escuro);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.conteudo-historia h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--gold-detalhe);
+    margin-top: 8px;
+}
+
+.conteudo-historia p {
+    font-size: 0.98rem;
+    color: #5C436E;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.citacao-marca {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    color: var(--lilas-escuro);
+    border-left: 3px solid var(--gold-detalhe);
+    padding-left: 15px;
+    margin-top: 25px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- SEÇÃO DE QUALIDADES & DIFERENCIAIS --- */
+.secao-qualidades {
+    margin-bottom: 60px;
+}
+
+.titulo-centrado {
+    font-family: 'Cinzel', serif;
+    color: var(--lilas-escuro);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.sub-centrado {
+    text-align: center;
+    color: #5C436E;
+    font-size: 1rem;
+    margin-bottom: 35px;
+}
+
+.grid-qualidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card-qualidade {
+    background: linear-gradient(145deg, #FFFFFF 0%, var(--bege-clarissimo) 100%);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 18px;
+    padding: 30px 22px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(154, 115, 181, 0.06);
+    transition: all 0.3s ease;
+}
+
+.card-qualidade:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-detalhe);
+    box-shadow: 0 12px 30px rgba(197, 160, 89, 0.2);
+}
+
+.icone-qualidade {
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--bege-clarissimo) 0%, var(--lilas-card) 100%);
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 18px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    border: 1px solid var(--gold-detalhe);
+}
+
+.card-qualidade h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--lilas-escuro);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-qualidade p {
+    font-size: 0.88rem;
+    color: #5C436E;
+    line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 850px) {
+    .secao-historia-grid {
+        flex-direction: column;
+        padding: 25px;
+    }
+}

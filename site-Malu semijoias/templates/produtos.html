@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Malu Semijoias</title>
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logotipo">MALU SEMIJOIAS</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('produtos') }}" class="active">Catálogo</a></li>
+                <li><a href="{{ url_for('carrinho') }}">Carrinho</a></li>
+                <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('logout') }}" class="btn-sair-nav">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="catalogo-wrapper">
+        <div class="catalogo-header">
+            <h2>Nossas Coleções</h2>
+            <p>Explore nossas peças exclusivas banhadas em Ouro 18k e Prata 925</p>
+        </div>
+
+        <!-- ABAS DE CATEGORIAS -->
+        <nav class="categorias-tabs">
+            <button class="tab-cat-btn active" data-category="cat-brincos">Brincos</button>
+            <button class="tab-cat-btn" data-category="cat-colares">Colares</button>
+            <button class="tab-cat-btn" data-category="cat-aneis">Anéis</button>
+            <button class="tab-cat-btn" data-category="cat-pulseiras">Pulseiras</button>
+            <button class="tab-cat-btn" data-category="cat-conjuntos">Conjuntos</button>
+        </nav>
+
+        <!-- ==================== ABA 1: BRINCOS ==================== -->
+        <section id="cat-brincos" class="tab-cat-content active">
+            <div class="grid-produtos">
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/brinco1.jpg" alt="Brinco">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Brinco Botão Madrepérola</h4>
+                        <p class="preco-produto">R$ 139.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(1, 'Brinco Botão Madrepérola', 139.90, '/static/img/brinco1.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/brinco2.jpg" alt="Brinco">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Brinco Gota Zircônia</h4>
+                        <p class="preco-produto">R$ 149.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(2, 'Brinco Gota Zircônia', 149.00, '/static/img/brinco2.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/brinco3.jpg" alt="Brinco">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Brinco Ear Cuff Leque</h4>
+                        <p class="preco-produto">R$ 159.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(3, 'Brinco Ear Cuff Leque', 159.90, '/static/img/brinco3.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/brinco4.jpg" alt="Brinco">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Trio de Brincos Com Pedra Vermelha</h4>
+                        <p class="preco-produto">R$ 149.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(4, 'Trio de Brincos Com Pedra Vermelha', 149.90, '/static/img/brinco4.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/brinco5.jpg" alt="Brinco">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Brinco de Coração Cravejado</h4>
+                        <p class="preco-produto">R$ 139.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(5, 'Brinco de Coração Cravejado', 139.90, '/static/img/brinco5.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/brinco6.jpg" alt="Brinco">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Brinco Ear Cuff</h4>
+                        <p class="preco-produto">R$ 189.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(6, 'Brinco Ear Cuff', 189.90, '/static/img/brinco6.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABA 2: COLARES ==================== -->
+        <section id="cat-colares" class="tab-cat-content">
+            <div class="grid-produtos">
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/colar2.jpg" alt="Colar Yellow France">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Colar Yellow France</h4>
+                        <p class="preco-produto">R$ 189.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(7, 'Colar Yellow France', 189.90, '/static/img/colar2.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/colar3.jpg" alt="Colar Pérola Sol">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Colar Pérola Sol</h4>
+                        <p class="preco-produto">R$ 170.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(8, 'Colar Pérola Sol', 170.90, '/static/img/colar3.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/colar4.jpg" alt="Colar Riviera Cruz Cravejada">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Colar Riviera Cruz Cravejada</h4>
+                        <p class="preco-produto">R$ 199.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(9, 'Colar Riviera Cruz Cravejada', 199.90, '/static/img/colar4.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/colar5.jpg" alt="Mix Colares Riviera">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Mix Colares Riviera</h4>
+                        <p class="preco-produto">R$ 300.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(10, 'Mix Colares Riviera', 300.90, '/static/img/colar5.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/colar6.jpg" alt="Colar Cruz Cravejada">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Colar Cruz Cravejada</h4>
+                        <p class="preco-produto">R$ 190.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(11, 'Colar Cruz Cravejada', 190.90, '/static/img/colar6.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABA 3: ANÉIS ==================== -->
+        <section id="cat-aneis" class="tab-cat-content">
+            <div class="grid-produtos">
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/anel1.jpg" alt="Anel">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Anel Aboulé Cravejado</h4>
+                        <p class="preco-produto">R$ 189.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(12, 'Anel Aboulé', 189.90, '/static/img/anel1.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/anel2.jpg" alt="Anel">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Anel em Espiral</h4>
+                        <p class="preco-produto">R$ 169.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(13, 'Anel em Espiral', 169.90, '/static/img/anel2.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/anel3.jpg" alt="Anel">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Anel Virginia</h4>
+                        <p class="preco-produto">R$ 150.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(14, 'Anel Virginia', 150.90, '/static/img/anel3.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/anel4.jpg" alt="Anel">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Anel de Esmeralda Cravejada</h4>
+                        <p class="preco-produto">R$ 159.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(15, 'Anel de Esmeralda Cravejada', 159.90, '/static/img/anel4.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/anel5.jpg" alt="Anel">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Anel 10 mll</h4>
+                        <p class="preco-produto">R$ 140.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(16, 'Anel 10 mll', 140.90, '/static/img/anel5.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/anel6.jpg" alt="Anel">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Anel Cravejado Rosa</h4>
+                        <p class="preco-produto">R$ 150.90</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(17, 'Anel Cravejado Rosa', 150.90, '/static/img/anel6.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABA 4: PULSEIRAS ==================== -->
+        <section id="cat-pulseiras" class="tab-cat-content">
+            <div class="grid-produtos">
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/pulseira1.jpg" alt="Pulseira">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Pulseira no Ródio Branco</h4>
+                        <p class="preco-produto">R$ 149.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(18, 'Pulseira no Ródio Branco', 149.00, '/static/img/pulseira1.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/pulseira2.jpg" alt="Pulseira">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Pulseira Cravejada</h4>
+                        <p class="preco-produto">R$ 119.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(19, 'Pulseira Cravejada', 119.00, '/static/img/pulseira2.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/pulseira3.jpg" alt="Pulseira">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Pulseira de 4 Trevos</h4>
+                        <p class="preco-produto">R$ 129.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(20, 'Pulseira de 4 Trevos', 129.00, '/static/img/pulseira3.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/pulseira4.jpg" alt="Pulseira">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Pulseira Riviera</h4>
+                        <p class="preco-produto">R$ 199.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(21, 'Pulseira Riviera', 199.00, '/static/img/pulseira4.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/pulseira5.jpg" alt="Pulseira">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Pulseira Riviera Luxo</h4>
+                        <p class="preco-produto">R$ 199.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(22, 'Pulseira Riviera Luxo', 199.00, '/static/img/pulseira5.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/pulseira6.jpg" alt="Pulseira">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Pulseira Bracelete</h4>
+                        <p class="preco-produto">R$ 130.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(23, 'Pulseira Bracelete', 130.00, '/static/img/pulseira6.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABA 5: CONJUNTOS ==================== -->
+        <section id="cat-conjuntos" class="tab-cat-content">
+            <div class="grid-produtos">
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/conjunto1.jpg" alt="Conjunto">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Conjunto Gota Roxo Esmeralda</h4>
+                        <p class="preco-produto">R$ 289.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(24, 'Conjunto Gota Roxo Esmeralda', 289.00, '/static/img/conjunto1.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/conjunto2.jpg" alt="Conjunto">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Conjunto Gota Verde Esmeralda</h4>
+                        <p class="preco-produto">R$ 269.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(25, 'Conjunto Gota Verde Esmeralda', 269.00, '/static/img/conjunto2.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/conjunto3.jpg" alt="Conjunto">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Conjunto Cadeado</h4>
+                        <p class="preco-produto">R$ 289.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(26, 'Conjunto Cadeado', 289.00, '/static/img/conjunto3.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/conjunto4.jpg" alt="Conjunto">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Conjunto Trevo</h4>
+                        <p class="preco-produto">R$ 159.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(27, 'Conjunto Trevo', 159.00, '/static/img/conjunto4.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/conjunto5.jpg" alt="Conjunto">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Conjunto Religioso</h4>
+                        <p class="preco-produto">R$ 149.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(28, 'Conjunto Religioso', 149.00, '/static/img/conjunto5.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-produto">
+                    <div class="box-imagem">
+                        <img src="/static/img/conjunto6.jpg" alt="Conjunto">
+                        <span class="badge-banho">Ouro 18k</span>
+                    </div>
+                    <div class="info-produto">
+                        <h4>Conjunto Azul Turquesa</h4>
+                        <p class="preco-produto">R$ 189.00</p>
+                        <button class="btn-add-carrinho" onclick="adicionarAoCarrinho(29, 'Conjunto Azul Turquesa', 189.00, '/static/img/conjunto6.jpg')">
+                            🛒 Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Malu Semijoias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/produtos.js') }}"></script>
+</body>
+</html>

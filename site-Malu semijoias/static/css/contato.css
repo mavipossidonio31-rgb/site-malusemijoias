@@ -1,0 +1,320 @@
+/* ==========================================================================
+   ESTILOS DE CONTATO & HEADER GLOBAL - MALU SEMIJOIAS
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F8F4FB;
+    font-family: 'Montserrat', sans-serif;
+    color: #4A325A;
+}
+
+/* --- HEADER GLOBAL --- */
+.header-container {
+    background: #FFFFFF;
+    border-bottom: 2px solid #C5A059;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.logotipo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #4A325A;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4A325A;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: #C5A059;
+    font-weight: 700;
+}
+
+.btn-sair-nav {
+    border: 1px solid #C5A059;
+    padding: 6px 16px;
+    border-radius: 15px;
+}
+
+/* --- WRAPPER E HERO --- */
+.contato-wrapper {
+    max-width: 1200px;
+    margin: 40px auto 80px auto;
+    padding: 0 20px;
+}
+
+.contato-hero {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.tag-subtitulo {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C5A059;
+    background-color: rgba(197, 160, 89, 0.12);
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    margin-bottom: 12px;
+}
+
+.contato-hero h2 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.contato-hero p {
+    color: #5C436E;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* --- BANNER DESTAQUE WHATSAPP VIP --- */
+.banner-vip-whatsapp {
+    background: linear-gradient(135deg, #4A325A 0%, #2A173B 100%);
+    border: 1px solid #C5A059;
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 12px 30px rgba(74, 50, 90, 0.2);
+}
+
+.vip-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.badge-vip {
+    color: #C5A059;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.vip-texto h3 {
+    font-family: 'Cinzel', serif;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin: 6px 0 8px 0;
+}
+
+.vip-texto p {
+    color: #E2D5EB;
+    font-size: 0.95rem;
+}
+
+.btn-entrar-vip {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-entrar-vip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.5);
+}
+
+/* --- GRID DE CONTATO --- */
+.contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+}
+
+/* --- CARDS DE CANAIS (ESQUERDA) --- */
+.cards-contato-info h3 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.desc-canais {
+    color: #5C436E;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.card-info-item {
+    display: flex;
+    align-items: flex-start;
+    background: #FFFFFF;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 16px rgba(74, 50, 90, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.card-info-item:hover {
+    transform: translateY(-3px);
+    border-color: #C5A059;
+}
+
+.icone-info {
+    font-size: 1.8rem;
+    margin-right: 18px;
+}
+
+.detalhes-info h4 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.detalhes-info p {
+    color: #5C436E;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+/* --- FORMULÁRIO (DIREITA) --- */
+.box-formulario-contato {
+    background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 100%);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(74, 50, 90, 0.08);
+}
+
+.box-formulario-contato h3 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.grupo-input-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.grupo-input label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4A325A;
+    margin-bottom: 6px;
+}
+
+.grupo-input input,
+.grupo-input select,
+.grupo-input textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    background: #FFFFFF;
+    color: #4A325A;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.grupo-input input:focus,
+.grupo-input select:focus,
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: #C5A059;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+.btn-enviar-mensagem {
+    width: 100%;
+    background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%);
+    color: #C5A059;
+    border: 1px solid #C5A059;
+    padding: 14px;
+    border-radius: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-enviar-mensagem:hover {
+    background: linear-gradient(135deg, #C5A059 0%, #D4AF37 100%);
+    color: #301B3F;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(197, 160, 89, 0.3);
+    color: #5C436E;
+    font-size: 0.85rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 868px) {
+    .vip-conteudo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-input-duplo {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,78 @@
+:root {
+    /* Paleta Lilás Claro & Bege Claríssimo */
+    --bg-lilas-claro: #F4EFFA;         /* Fundo lilás muito suave */
+    --lilas-card: #E2D4F0;             /* Lilás elegante para cards */
+    --lilas-accent: #9A73B5;           /* Lilás de contraste */
+    --lilas-escuro: #4A325A;           /* Tom escuro para textos */
+    --bege-clarissimo: #FAF8F5;        /* Bege neutro ultra suave */
+    --bege-dourado: #E8DFD1;           /* Bege nobre */
+    --gold-detalhe: #C5A059;           /* Dourado suave para destaques */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-lilas-claro);
+    color: var(--lilas-escuro);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tipografia Cinzel para Títulos */
+h1, h2, h3, .logotipo {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+}
+
+header.header-container {
+    background-color: var(--bege-clarissimo);
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--gold-detalhe);
+    box-shadow: 0 4px 15px rgba(154, 115, 181, 0.08);
+}
+
+.logotipo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--lilas-escuro);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--lilas-escuro);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding-bottom: 4px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--lilas-accent);
+    border-bottom: 2px solid var(--gold-detalhe);
+}
+
+footer {
+    background-color: var(--bege-clarissimo);
+    color: var(--lilas-escuro);
+    text-align: center;
+    padding: 18px;
+    margin-top: auto;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--gold-detalhe);
+}

@@ -1,0 +1,179 @@
+/* ==========================================================================
+   CATÁLOGO COM 3 COLUNAS FIXAS - MALU SEMIJOIAS
+   ========================================================================== */
+
+.catalogo-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.catalogo-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.catalogo-header h2 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* --- BARRA DE ABAS DESLIZANTE --- */
+.categorias-tabs {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 10px;
+    margin-bottom: 35px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(197, 160, 89, 0.25);
+}
+
+.categorias-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+
+.categorias-tabs::-webkit-scrollbar-thumb {
+    background: #C5A059;
+    border-radius: 10px;
+}
+
+.tab-cat-btn {
+    white-space: nowrap;
+    background: #FFFFFF;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    color: #4A325A;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-cat-btn:hover,
+.tab-cat-btn.active {
+    background: linear-gradient(135deg, #4A325A 0%, #352142 100%);
+    color: #C5A059;
+    border-color: #C5A059;
+}
+
+.tab-cat-content {
+    display: none;
+}
+
+.tab-cat-content.active {
+    display: block;
+}
+
+/* --- GRADE FIXA DE 3 COLUNAS --- */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card-produto {
+    background: #FFFFFF;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-5px);
+    border-color: #C5A059;
+}
+
+.box-imagem {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #F8F6F2;
+}
+
+.box-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-banho {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(74, 50, 90, 0.9);
+    color: #C5A059;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+.info-produto {
+    padding: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.info-produto h4 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.preco-produto {
+    color: #C5A059;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    margin-top: auto;
+}
+
+.btn-add-carrinho {
+    width: 100%;
+    background: #4A325A;
+    color: #FFFFFF;
+    border: 1px solid #C5A059;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-add-carrinho:hover {
+    background: #352142;
+}
+
+.sem-produtos {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #5C436E;
+    padding: 40px 0;
+}
+
+@media (max-width: 768px) {
+    .grid-produtos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-produtos {
+        grid-template-columns: 1fr;
+    }
+}

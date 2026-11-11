@@ -1,0 +1,321 @@
+/* ==========================================================================
+   ESTILOS DO PAINEL ADMIN - MALU SEMIJOIAS
+   ========================================================================== */
+
+body.bg-admin {
+    background-color: #F8F4FB;
+    font-family: 'Montserrat', sans-serif;
+    color: #4A325A;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-wrapper {
+    max-width: 1200px;
+    margin: 30px auto 60px auto;
+    padding: 0 20px;
+}
+
+/* --- ABAS DE NAVEGAÇÃO --- */
+.menu-abas-admin {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-aba-admin {
+    background: #FFFFFF;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    color: #4A325A;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(74, 50, 90, 0.05);
+}
+
+.btn-aba-admin.active,
+.btn-aba-admin:hover {
+    background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%) !important;
+    color: #C5A059 !important;
+    border-color: #C5A059 !important;
+    box-shadow: 0 6px 15px rgba(74, 50, 90, 0.15);
+}
+
+/* --- VISIBILIDADE DAS SEÇÕES DE ABA --- */
+.conteudo-admin-aba {
+    display: none !important;
+}
+
+.conteudo-admin-aba.active {
+    display: block !important;
+}
+
+/* --- CARD DO PAINEL ADMIN --- */
+.card-admin-painel {
+    background: #FFFFFF;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(74, 50, 90, 0.06);
+}
+
+.card-admin-painel h2 {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.subtitulo-card {
+    color: #5C436E;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+/* --- CARDS DE MÉTRICAS (FATURAMENTO) --- */
+.cards-metricas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card-metrica {
+    background: #FAF8F5;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.metrica-titulo {
+    font-size: 0.85rem;
+    color: #5C436E;
+    font-weight: 600;
+}
+
+.metrica-valor {
+    font-family: 'Cinzel', serif;
+    color: #4A325A;
+    font-size: 1.8rem;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* --- FORMULÁRIO DE NOVO PRODUTO --- */
+.form-novo-produto {
+    background: #FAF8F5;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 35px;
+}
+
+.grupo-input-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4A325A;
+    margin-bottom: 6px;
+}
+
+.grupo-input input,
+.grupo-input select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #4A325A;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.btn-cadastrar-prod {
+    background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%);
+    color: #C5A059;
+    border: 1px solid #C5A059;
+    padding: 14px;
+    border-radius: 25px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-cadastrar-prod:hover {
+    background: linear-gradient(135deg, #C5A059 0%, #D4AF37 100%);
+    color: #301B3F;
+}
+
+/* --- TABELAS --- */
+.tabela-responsive {
+    overflow-x: auto;
+}
+
+.tabela-admin {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabela-admin th {
+    background: #301B3F;
+    color: #FFFFFF;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.tabela-admin th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.tabela-admin th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.tabela-admin td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    font-size: 0.9rem;
+    color: #4A325A;
+    vertical-align: middle;
+}
+
+.tabela-vazia {
+    text-align: center;
+    padding: 25px !important;
+    color: #5C436E;
+}
+
+.img-thumb-admin {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #C5A059;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.badge-estoque {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.badge-estoque.baixo {
+    background: #FFEBEE;
+    color: #C62828;
+}
+
+.badge-status-admin {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.select-status {
+    padding: 6px 12px;
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #4A325A;
+    background: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+}
+
+/* --- BARRA DE BUSCA NA ABA PEDIDOS --- */
+.header-com-busca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgba(197, 160, 89, 0.2);
+    padding-bottom: 15px;
+}
+
+.form-busca-admin {
+    display: flex;
+    align-items: center;
+}
+
+.box-input-busca {
+    display: flex;
+    align-items: center;
+    background: #FAF8F5;
+    border: 1px solid #C5A059;
+    border-radius: 25px;
+    padding: 4px 6px 4px 16px;
+}
+
+.box-input-busca input {
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #4A325A;
+    width: 230px;
+    background: transparent;
+}
+
+.btn-limpar-busca {
+    color: #B33939;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.btn-buscar-admin {
+    background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%);
+    color: #C5A059;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .grupo-input-duplo {
+        grid-template-columns: 1fr;
+    }
+}

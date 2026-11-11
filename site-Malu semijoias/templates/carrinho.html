@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras & Pedidos - Malu Semijoias</title>
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <style>
+        body {
+            background-color: #F8F4FB !important;
+            font-family: 'Montserrat', sans-serif !important;
+            color: #4A325A !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carrinho-wrapper {
+            max-width: 1200px;
+            margin: 30px auto 80px auto;
+            padding: 0 20px;
+        }
+
+        /* BANNER DE FRETE GRÁTIS */
+        .frete-gratis-banner {
+            background: linear-gradient(135deg, #FAF8F5 0%, #FFF 100%);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 16px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(74, 50, 90, 0.04);
+            text-align: center;
+        }
+
+        .frete-gratis-texto {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4A325A;
+            margin-bottom: 8px;
+        }
+
+        .barra-progresso-bg {
+            background: #EBE5F0;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .barra-progresso-fill {
+            background: linear-gradient(90deg, #C5A059 0%, #D4AF37 100%);
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        /* MENU DE ABAS LUXO */
+        .menu-abas-carrinho {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-aba-carrinho {
+            background: #FFFFFF;
+            border: 1.5px solid rgba(197, 160, 89, 0.4);
+            color: #4A325A;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 12px 28px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(74, 50, 90, 0.05);
+        }
+
+        .btn-aba-carrinho.active,
+        .btn-aba-carrinho:hover {
+            background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%) !important;
+            color: #C5A059 !important;
+            border-color: #C5A059 !important;
+            box-shadow: 0 6px 18px rgba(74, 50, 90, 0.18);
+        }
+
+        /* EXIBIÇÃO DE SEÇÕES DE ABA */
+        .conteudo-aba-carrinho {
+            display: none !important;
+        }
+
+        .conteudo-aba-carrinho.active {
+            display: block !important;
+        }
+
+        /* GRELHA DO CARRINHO */
+        .carrinho-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+        }
+
+        .box-card-carrinho {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(197, 160, 89, 0.35) !important;
+            border-radius: 20px !important;
+            padding: 30px !important;
+            box-shadow: 0 10px 30px rgba(74, 50, 90, 0.06) !important;
+        }
+
+        .box-card-carrinho h2,
+        .box-card-carrinho h3 {
+            font-family: 'Cinzel', serif;
+            color: #4A325A;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        /* MENSAGEM VAZIO */
+        .carrinho-vazio-msg {
+            text-align: center;
+            padding: 50px 20px;
+            color: #5C436E;
+        }
+
+        .link-catalogo {
+            display: inline-block;
+            margin-top: 12px;
+            background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%);
+            color: #C5A059;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-catalogo:hover {
+            background: #C5A059;
+            color: #301B3F;
+        }
+
+        /* CAMPOS DE INPUT E CEP */
+        .grupo-input-carrinho {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .grupo-input-carrinho label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #4A325A;
+            margin-bottom: 5px;
+        }
+
+        .box-cep-btn {
+            display: flex;
+            gap: 10px;
+        }
+
+        .box-cep-btn input,
+        .grupo-input-carrinho input,
+        .grupo-input-carrinho select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #4A325A;
+            background: #FFFFFF;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .grupo-input-carrinho input[readonly] {
+            background-color: #F6F2F9 !important;
+            color: #5C436E !important;
+        }
+
+        .btn-calcular-frete {
+            background: #4A325A;
+            color: #FFFFFF;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-calcular-frete:hover {
+            background: #C5A059;
+        }
+
+        .msg-status-cep {
+            display: block;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .bloco-endereco-entrega {
+            background: #FAF8F5;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .bloco-endereco-entrega.hidden {
+            display: none !important;
+        }
+
+        .grupo-input-duplo-carrinho {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 10px;
+        }
+
+        /* RESUMO DE VALORES */
+        .divisor-resumo {
+            border: none;
+            border-top: 1px dashed rgba(197, 160, 89, 0.4);
+            margin: 18px 0;
+        }
+
+        .linha-resumo {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #5C436E;
+        }
+
+        .total-destaque {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #4A325A;
+            margin: 18px 0;
+        }
+
+        .total-destaque span:last-child {
+            color: #C5A059;
+            font-family: 'Cinzel', serif;
+        }
+
+        .btn-finalizar-pedido {
+            width: 100%;
+            background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%);
+            color: #C5A059;
+            border: 1px solid #C5A059;
+            padding: 15px;
+            border-radius: 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 50, 90, 0.15);
+        }
+
+        .btn-finalizar-pedido:hover {
+            background: linear-gradient(135deg, #C5A059 0%, #D4AF37 100%);
+            color: #301B3F;
+        }
+
+        /* INFOS DE SEGURANÇA NA LATERAL */
+        .selos-seguranca {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            padding-top: 15px;
+        }
+
+        .selo-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #5C436E;
+            font-weight: 500;
+        }
+
+        /* TABELA DE PEDIDOS */
+        .tabela-responsive {
+            overflow-x: auto;
+        }
+
+        .tabela-pedidos-cliente {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .tabela-pedidos-cliente th {
+            background: #301B3F !important;
+            color: #FFFFFF !important;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        .tabela-pedidos-cliente th:first-child { border-top-left-radius: 10px; }
+        .tabela-pedidos-cliente th:last-child { border-top-right-radius: 10px; }
+
+        .tabela-pedidos-cliente td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            font-size: 0.88rem;
+            color: #4A325A;
+            vertical-align: middle;
+        }
+
+        .badge-status-cliente {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .status-novo { background: #FFF3CD; color: #856404; border: 1px solid #FFEBAA; }
+        .status-preparo { background: #E2F0D9; color: #385723; border: 1px solid #C5E0B4; }
+        .status-transito { background: #D9E1F2; color: #1F4E79; border: 1px solid #B4C6E7; }
+        .status-entregue { background: #E8F5E9; color: #1B5E20; border: 1px solid #A5D6A7; }
+        .status-cancelado { background: #FFEBEE; color: #C62828; border: 1px solid #FFCDD2; }
+
+        @media (max-width: 868px) {
+            .carrinho-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-container">
+        <div class="logotipo">MALU SEMIJOIAS</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('produtos') }}">Catálogo</a></li>
+                <li><a href="{{ url_for('carrinho') }}" class="active">Carrinho</a></li>
+                <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('logout') }}" class="btn-sair-nav">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="carrinho-wrapper">
+
+        <!-- BANNER INTERATIVO DE FRETE GRÁTIS -->
+        <div class="frete-gratis-banner">
+            <div class="frete-gratis-texto" id="frete-gratis-texto">
+                💎 Faltam <strong>R$ 300,00</strong> para ganhar <strong>FRETE GRÁTIS</strong>!
+            </div>
+            <div class="barra-progresso-bg">
+                <div class="barra-progresso-fill" id="barra-progresso-fill"></div>
+            </div>
+        </div>
+
+        <!-- BOTÕES DE ABAS -->
+        <div class="menu-abas-carrinho">
+            <button class="btn-aba-carrinho active" id="btn-aba-carrinho" onclick="trocarAbaCarrinho('aba-itens')">🛒 MEU CARRINHO</button>
+            <button class="btn-aba-carrinho" id="btn-aba-pedidos" onclick="trocarAbaCarrinho('aba-meus-pedidos')">📦 MEUS PEDIDOS / ACOMPANHAR</button>
+        </div>
+
+        <!-- ==================== ABA 1: MEU CARRINHO ==================== -->
+        <div id="aba-itens" class="conteudo-aba-carrinho active">
+            <div class="carrinho-grid">
+
+                <!-- LISTA DE ITENS -->
+                <div class="box-card-carrinho">
+                    <h2>Itens Selecionados</h2>
+
+                    <div id="lista-carrinho-vazio" class="carrinho-vazio-msg">
+                        <p style="font-size: 1.1rem; margin-bottom: 8px;">Seu carrinho está vazio no momento.</p>
+                        <p style="font-size: 0.85rem; color: #8A6D9B;">Descubra nossas coleções exclusivas banhadas a Ouro 18k e Prata 925.</p>
+                        <a href="{{ url_for('produtos') }}" class="link-catalogo">✨ Explorar Catálogo</a>
+                    </div>
+
+                    <div id="container-itens-carrinho"></div>
+                </div>
+
+                <!-- RESUMO DA COMPRA + CEP -->
+                <div class="box-card-carrinho box-resumo">
+                    <h3>Resumo da Compra</h3>
+
+                    <!-- CÁLCULO DE CEP (VIACEP) -->
+                    <div class="grupo-input-carrinho">
+                        <label for="cep">Calcular Envio & Prazo (CEP):</label>
+                        <div class="box-cep-btn">
+                            <input type="text" id="cep" maxlength="9" placeholder="00000-000" onblur="buscarEnderecoPorCEP()">
+                            <button type="button" class="btn-calcular-frete" onclick="buscarEnderecoPorCEP()">Calcular</button>
+                        </div>
+                        <small id="status-cep" class="msg-status-cep"></small>
+                    </div>
+
+                    <!-- ENDEREÇO DESDOBRADO -->
+                    <div id="bloco-endereco" class="bloco-endereco-entrega hidden">
+                        <div class="grupo-input-carrinho">
+                            <label for="rua">Rua / Logradouro</label>
+                            <input type="text" id="rua" placeholder="Rua / Avenida..." readonly>
+                        </div>
+
+                        <div class="grupo-input-duplo-carrinho">
+                            <div class="grupo-input-carrinho">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" placeholder="Bairro..." readonly>
+                            </div>
+                            <div class="grupo-input-carrinho">
+                                <label for="numero">Número *</label>
+                                <input type="text" id="numero" placeholder="Nº 123">
+                            </div>
+                        </div>
+
+                        <div class="grupo-input-carrinho">
+                            <label for="cidade_uf">Cidade / UF</label>
+                            <input type="text" id="cidade_uf" placeholder="Cidade - UF" readonly>
+                        </div>
+                    </div>
+
+                    <hr class="divisor-resumo">
+
+                    <div class="linha-resumo">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-valor">R$ 0.00</span>
+                    </div>
+                    <div class="linha-resumo">
+                        <span>Taxa de Envio:</span>
+                        <span id="frete-valor">R$ 0.00</span>
+                    </div>
+
+                    <div class="linha-resumo total-destaque">
+                        <span>TOTAL:</span>
+                        <span id="total-valor">R$ 0.00</span>
+                    </div>
+
+                    <div class="grupo-input-carrinho">
+                        <label for="forma_pagamento">Forma de Pagamento:</label>
+                        <select id="forma_pagamento">
+                            <option value="Pix">Pix (Aprovação Imediata + QR Code)</option>
+                            <option value="Cartão de Crédito">Cartão de Crédito (até 6x sem juros)</option>
+                            <option value="Boleto Bancário">Boleto Bancário (à vista)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-finalizar-pedido" onclick="finalizarCompra()">✦ FINALIZAR PEDIDO</button>
+
+                    <!-- BADGES DE SEGURANÇA -->
+                    <div class="selos-seguranca">
+                        <div class="selo-item">🔒 Compra 100% Segura</div>
+                        <div class="selo-item">💎 Garantia de 1 Ano</div>
+                        <div class="selo-item">🚚 Entrega Rastreada</div>
+                        <div class="selo-item">✨ Banho Antialérgico</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================== ABA 2: MEUS PEDIDOS / ACOMPANHAR ==================== -->
+        <div id="aba-meus-pedidos" class="conteudo-aba-carrinho">
+            <div class="box-card-carrinho">
+                <h2>📦 Meus Pedidos Realizados</h2>
+                <p style="color: #5C436E; font-size: 0.9rem; margin-bottom: 25px;">Acompanhe abaixo o status e o andamento das suas compras em tempo real.</p>
+
+                <div class="tabela-responsive">
+                    <table class="tabela-pedidos-cliente">
+                        <thead>
+                            <tr>
+                                <th>Nº Pedido</th>
+                                <th>Data / Hora</th>
+                                <th>Pagamento</th>
+                                <th>Valor Total</th>
+                                <th>Status do Envio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if pedidos_cliente %}
+                                {% for ped in pedidos_cliente %}
+                                <tr>
+                                    <td><strong>#{{ ped.id }}</strong></td>
+                                    <td>{{ ped.data.strftime('%d/%m/%Y às %H:%M') }}</td>
+                                    <td>{{ ped.forma_pagamento }}</td>
+                                    <td><strong style="color: #C5A059;">R$ {{ "%.2f"|format(ped.total) }}</strong></td>
+                                    <td>
+                                        {% if ped.status == 'Novo Pedido' %}
+                                            <span class="badge-status-cliente status-novo">⚡ Novo Pedido</span>
+                                        {% elif ped.status == 'Sendo Preparado' %}
+                                            <span class="badge-status-cliente status-preparo">⏳ Sendo Preparado</span>
+                                        {% elif ped.status == 'Em Trânsito' %}
+                                            <span class="badge-status-cliente status-transito">🚚 Em Trânsito</span>
+                                        {% elif ped.status == 'Entregue' %}
+                                            <span class="badge-status-cliente status-entregue">✅ Entregue</span>
+                                        {% elif ped.status == 'Cancelado' %}
+                                            <span class="badge-status-cliente status-cancelado">❌ Cancelado</span>
+                                        {% else %}
+                                            <span class="badge-status-cliente">{{ ped.status }}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5" style="text-align: center; padding: 40px; color: #5C436E;">
+                                        Você ainda não possui nenhum pedido cadastrado.<br>
+                                        <a href="{{ url_for('produtos') }}" class="link-catalogo" style="margin-top: 15px;">Fazer Primeira Compra</a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DE PAGAMENTO PIX -->
+    <div id="modal-pix" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); justify-content: center; align-items: center; z-index: 9999;">
+        <div style="background: #FFFFFF; border: 2px solid #C5A059; border-radius: 20px; padding: 30px; max-width: 420px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+            <h3 style="font-family: 'Cinzel', serif; color: #4A325A; margin-bottom: 10px;">Pagamento via Pix</h3>
+            <p style="color: #5C436E; font-size: 0.88rem; margin-bottom: 20px;">Escaneie o QR Code abaixo com a aplicação do seu banco:</p>
+
+            <div style="margin: 0 auto 20px auto; background: #FAF8F5; padding: 15px; border-radius: 14px; display: inline-block; border: 1px solid rgba(197, 160, 89, 0.4);">
+                <img id="qr-code-img" src="" alt="QR Code Pix" style="width: 200px; height: 200px;">
+            </div>
+
+            <p style="font-size: 0.82rem; color: #4A325A; font-weight: bold; margin-bottom: 6px;">Chave Pix Copia e Cola:</p>
+            <input type="text" id="pix-copia-cola" value="00020126580014br.gov.bcb.pix0136malusemijoias@exemplo.com5204000053039865802BR5914Malu Semijoias6009CAMPINAS620705031236304E2CA" readonly style="width: 100%; padding: 10px; border: 1px solid #C5A059; border-radius: 8px; font-size: 0.75rem; text-align: center; background: #FAF8F5; margin-bottom: 15px; color: #5C436E;">
+
+            <button onclick="copiarPix()" style="background: #C5A059; color: #FFFFFF; border: none; padding: 11px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-bottom: 10px; width: 100%;">📋 Copiar Chave Pix</button>
+            <button onclick="fecharModalPix()" style="background: linear-gradient(135deg, #4A325A 0%, #301B3F 100%); color: #C5A059; border: none; padding: 13px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; width: 100%;">Concluir Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Malu Semijoias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        let taxaFrete = 0;
+        let subtotalGlobal = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarCarrinho();
+        });
+
+        function carregarCarrinho() {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho_malu')) || [];
+            const container = document.getElementById('container-itens-carrinho');
+            const msgVazio = document.getElementById('lista-carrinho-vazio');
+
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (carrinho.length === 0) {
+                if (msgVazio) msgVazio.style.display = 'block';
+                atualizarValores(0);
+                atualizarBarraFrete(0);
+                return;
+            }
+
+            if (msgVazio) msgVazio.style.display = 'none';
+            subtotalGlobal = 0;
+
+            carrinho.forEach((item, index) => {
+                const qtd = item.quantidade || 1;
+                subtotalGlobal += item.preco * qtd;
+
+                const itemHTML = `
+                    <div class="item-carrinho-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(197, 160, 89, 0.25);">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <img src="${item.imagem_url}" alt="${item.nome}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 12px; border: 1px solid #C5A059;">
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; color: #4A325A; margin: 0 0 6px 0; font-size: 0.95rem;">${item.nome}</h4>
+                                <p style="color: #C5A059; font-weight: bold; margin: 0; font-size: 0.9rem;">R$ ${parseFloat(item.preco).toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <div style="display: flex; align-items: center; border: 1px solid #C5A059; border-radius: 20px; overflow: hidden; background: #FAF8F5;">
+                                <button onclick="alterarQuantidade(${index}, -1)" style="background: none; border: none; padding: 6px 12px; cursor: pointer; color: #4A325A; font-weight: bold;">-</button>
+                                <span style="padding: 0 8px; font-weight: 600; font-size: 0.85rem;">${qtd}</span>
+                                <button onclick="alterarQuantidade(${index}, 1)" style="background: none; border: none; padding: 6px 12px; cursor: pointer; color: #4A325A; font-weight: bold;">+</button>
+                            </div>
+                            <button onclick="removerItem(${index})" style="background: none; border: none; color: #B33939; font-size: 1.2rem; cursor: pointer;" title="Remover item">🗑️</button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            });
+
+            atualizarValores(subtotalGlobal);
+            atualizarBarraFrete(subtotalGlobal);
+        }
+
+        function atualizarBarraFrete(subtotal) {
+            const meta = 300.00;
+            const texto = document.getElementById('frete-gratis-texto');
+            const barra = document.getElementById('barra-progresso-fill');
+
+            if (subtotal >= meta) {
+                texto.innerHTML = "🎉 Parabéns! Você ganhou <strong>FRETE GRÁTIS</strong>!";
+                barra.style.width = "100%";
+                taxaFrete = 0;
+            } else {
+                const restante = meta - subtotal;
+                const porcentagem = Math.min((subtotal / meta) * 100, 100);
+                texto.innerHTML = `💎 Faltam <strong>R$ ${restante.toFixed(2)}</strong> para ganhar <strong>FRETE GRÁTIS</strong>!`;
+                barra.style.width = `${porcentagem}%`;
+            }
+        }
+
+        function alterarQuantidade(index, mudanca) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_malu')) || [];
+            if (carrinho[index]) {
+                carrinho[index].quantidade = (carrinho[index].quantidade || 1) + mudanca;
+                if (carrinho[index].quantidade <= 0) {
+                    carrinho.splice(index, 1);
+                }
+                localStorage.setItem('carrinho_malu', JSON.stringify(carrinho));
+                carregarCarrinho();
+            }
+        }
+
+        function removerItem(index) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_malu')) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho_malu', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        function atualizarValores(subtotal) {
+            const elSubtotal = document.getElementById('subtotal-valor');
+            const elFrete = document.getElementById('frete-valor');
+            const elTotal = document.getElementById('total-valor');
+
+            if (elSubtotal) elSubtotal.textContent = `R$ ${subtotal.toFixed(2)}`;
+            if (elFrete) elFrete.textContent = `R$ ${taxaFrete.toFixed(2)}`;
+            if (elTotal) elTotal.textContent = `R$ ${(subtotal + taxaFrete).toFixed(2)}`;
+        }
+
+        function buscarEnderecoPorCEP() {
+            let cepInput = document.getElementById('cep').value.replace(/\D/g, '');
+            const statusMsg = document.getElementById('status-cep');
+            const blocoEndereco = document.getElementById('bloco-endereco');
+
+            if (cepInput.length !== 8) {
+                statusMsg.textContent = "Digite um CEP válido com 8 dígitos.";
+                statusMsg.style.color = "#C62828";
+                return;
+            }
+
+            statusMsg.textContent = "Buscando endereço...";
+            statusMsg.style.color = "#C5A059";
+
+            fetch(`https://viacep.com.br/ws/${cepInput}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        statusMsg.textContent = "CEP não encontrado.";
+                        statusMsg.style.color = "#C62828";
+                        blocoEndereco.classList.add('hidden');
+                    } else {
+                        document.getElementById('rua').value = data.logradouro || '';
+                        document.getElementById('bairro').value = data.bairro || '';
+                        document.getElementById('cidade_uf').value = `${data.localidade} - ${data.uf}`;
+
+                        statusMsg.textContent = "✓ Endereço localizado! Digite o número da residência.";
+                        statusMsg.style.color = "#2E7D32";
+                        blocoEndereco.classList.remove('hidden');
+
+                        if (subtotalGlobal < 300) {
+                            taxaFrete = 15.00;
+                        }
+                        carregarCarrinho();
+                    }
+                })
+                .catch(() => {
+                    statusMsg.textContent = "Erro ao buscar CEP.";
+                    statusMsg.style.color = "#C62828";
+                });
+        }
+
+        function trocarAbaCarrinho(abaId) {
+            document.querySelectorAll('.conteudo-aba-carrinho').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.btn-aba-carrinho').forEach(el => el.classList.remove('active'));
+
+            const abaAlvo = document.getElementById(abaId);
+            if (abaAlvo) abaAlvo.classList.add('active');
+
+            if (abaId === 'aba-itens') document.getElementById('btn-aba-carrinho').classList.add('active');
+            if (abaId === 'aba-meus-pedidos') document.getElementById('btn-aba-pedidos').classList.add('active');
+        }
+
+        function finalizarCompra() {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho_malu')) || [];
+            if (carrinho.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+
+            const formaPagamento = document.getElementById('forma_pagamento').value;
+            const total = (subtotalGlobal + taxaFrete).toFixed(2);
+
+            fetch('/finalizar_pedido', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ itens: carrinho, forma_pagamento: formaPagamento })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    if (formaPagamento === 'Pix') {
+                        const valorFormatado = encodeURIComponent(`R$ ${total}`);
+                        const qrUrl = `https://quickchart.io/qr?text=PIX_MALU_SEMIJOIAS_${data.pedido_id}_VALOR_${valorFormatado}&size=200`;
+                        document.getElementById('qr-code-img').src = qrUrl;
+                        document.getElementById('modal-pix').style.display = 'flex';
+                    } else {
+                        alert('✨ Pedido realizado com sucesso! Nº do Pedido: #' + data.pedido_id);
+                        localStorage.removeItem('carrinho_malu');
+                        window.location.href = "{{ url_for('carrinho') }}";
+                    }
+                } else {
+                    alert('Atenção: ' + data.message);
+                }
+            })
+            .catch(() => {
+                alert('Erro ao processar pedido. Certifique-se de que está logado como cliente.');
+            });
+        }
+
+        function copiarPix() {
+            const pixInput = document.getElementById('pix-copia-cola');
+            pixInput.select();
+            document.execCommand('copy');
+            alert('✓ Chave Pix copiada com sucesso!');
+        }
+
+        function fecharModalPix() {
+            document.getElementById('modal-pix').style.display = 'none';
+            localStorage.removeItem('carrinho_malu');
+            window.location.href = "{{ url_for('carrinho') }}";
+        }
+    </script>
+</body>
+</html>
