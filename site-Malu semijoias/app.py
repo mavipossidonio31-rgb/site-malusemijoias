@@ -393,7 +393,9 @@ def popular_banco():
 
 # ==================== INICIALIZAÇÃO DO SERVIDOR ====================
 
+# Garanta que a variável `app` exista no topo (app = Flask(__name__))
+
 if __name__ == '__main__':
     with app.app_context():
         popular_banco()
-    app.run(debug=True)
+    app.run()
